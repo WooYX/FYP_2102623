@@ -2,11 +2,11 @@ package edu.my.fyp_2102623;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -58,7 +58,7 @@ public class TryGoogleAPI extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == GOOGLE_FIT_PERMISSIONS_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -68,11 +68,12 @@ public class TryGoogleAPI extends AppCompatActivity {
                 // Enable the Get Data button once the user is signed in
                 btnGetData.setEnabled(true);
             } catch (ApiException e) {
-                // Handle the exception
-                e.printStackTrace();
+                // Log the error message
+                Log.e("Google Fit", "Error signing in with Google", e);
             }
         }
     }
+
 
     private void getFitnessData() {
         // Define the start and end times for the data request
@@ -104,8 +105,10 @@ public class TryGoogleAPI extends AppCompatActivity {
                     tvFitnessData.setText(fitnessData.toString());
                 })
                 .addOnFailureListener(e -> {
-                    // Handle any errors that occurred during the API call
-                    e.printStackTrace();
+                    // Log the error message
+                    Log.e("Google Fit", "Error fetching fitness data", e);
                 });
     }
+
+
 }
