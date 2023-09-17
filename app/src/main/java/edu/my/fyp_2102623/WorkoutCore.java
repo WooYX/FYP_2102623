@@ -3,26 +3,22 @@ package edu.my.fyp_2102623;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Welcome extends AppCompatActivity {
+public class WorkoutCore extends AppCompatActivity {
 
-    TextView welcomePage, subPage, btnExercise;
-    ImageView wlcPage;
+    TextView welcomePage, subPage, introPage,subintroPage,BtnExerciseFull;
     Animation animimpage, bttone, bttwo, btthree, ltr;
-    View Progress, ProgressStop;
+    View divpage,Progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
-
+        setContentView(R.layout.activity_workoutfb);
         //load animation
         animimpage = AnimationUtils.loadAnimation(this, R.anim.animimpage);
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
@@ -32,27 +28,28 @@ public class Welcome extends AppCompatActivity {
 
         welcomePage = (TextView) findViewById(R.id.welcomePage);
         subPage = (TextView) findViewById(R.id.subPage);
-        btnExercise = (TextView) findViewById(R.id.btnExercise);
-        wlcPage = (ImageView) findViewById(R.id.wlcPage);
+        introPage = (TextView) findViewById(R.id.introPage);
+        subintroPage = (TextView) findViewById(R.id.subintroPage);
+        divpage=(View)findViewById(R.id.divpage);
         Progress = (View) findViewById(R.id.Progress);
-        ProgressStop = (View) findViewById(R.id.ProgressStop);
+        BtnExerciseFull=(TextView)findViewById(R.id.btnExerciseFull);
 
-        //export animation
-        wlcPage.startAnimation(animimpage);
-        welcomePage.startAnimation(bttone);
-        subPage.startAnimation(bttwo);
-
-        btnExercise.startAnimation(btthree);
-        Progress.startAnimation(bttwo);
-        ProgressStop.startAnimation(ltr);
-
-        btnExercise.setOnClickListener(new View.OnClickListener() {
+        BtnExerciseFull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent
-                Intent intent = new Intent(Welcome.this, MainActivity.class);
+                // Create and start the intent to navigate to WorkoutFullBody activity
+                Intent intent = new Intent(WorkoutCore.this, CoreProgram.class);
                 startActivity(intent);
             }
         });
+
+        //export animation
+        welcomePage.startAnimation(bttone);
+        subPage.startAnimation(bttwo);
+        introPage.startAnimation(bttone);
+        subintroPage.startAnimation(bttwo);
+
+        divpage.startAnimation(btthree);
+        Progress.startAnimation(bttwo);
     }
 }
