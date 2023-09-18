@@ -50,7 +50,7 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent
-                Intent intent = new Intent(Welcome.this, MainActivity.class);
+                Intent intent = new Intent(Welcome.this, TryGoogleAPI.class);
                 startActivity(intent);
             }
         });

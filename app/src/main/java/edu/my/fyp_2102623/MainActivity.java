@@ -1,6 +1,6 @@
 package edu.my.fyp_2102623;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView workout, motivations, group,hearticon,stepicon,burnedicon,Stairsicon;
     TextView startworkout, startmotivate, startgroup, PersonalInfo, welcomeMssg;
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_home:
                         Intent intent1 = new Intent(MainActivity.this, MainActivity.class);
@@ -113,56 +113,56 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, WorkoutPage.class);
-                startActivity(intent);
+                Intent intent6 = new Intent(MainActivity.this, WorkoutPage.class);
+                startActivity(intent6);
             }
         });
         startworkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, WorkoutPage.class);
-                startActivity(intent);
+                Intent intent7 = new Intent(MainActivity.this, WorkoutPage.class);
+                startActivity(intent7);
             }
         });
         motivations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, Motivational.class);
-                startActivity(intent);
+                Intent intent8 = new Intent(MainActivity.this, Motivational.class);
+                startActivity(intent8);
             }
         });
         startmotivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, Motivational.class);
-                startActivity(intent);
+                Intent intent9 = new Intent(MainActivity.this, Motivational.class);
+                startActivity(intent9);
             }
         });
         group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, SNG.class);
-                startActivity(intent);
+                Intent intent10 = new Intent(MainActivity.this, SNG.class);
+                startActivity(intent10);
             }
         });
         startgroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, SNG.class);
-                startActivity(intent);
+                Intent intent11 = new Intent(MainActivity.this, SNG.class);
+                startActivity(intent11);
             }
         });
         PersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(MainActivity.this, PersonalInfo.class);
-                startActivity(intent);
+                Intent intent12 = new Intent(MainActivity.this, PersonalInfo.class);
+                startActivity(intent12);
             }
         });
 

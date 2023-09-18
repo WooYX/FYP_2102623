@@ -55,160 +55,160 @@ public class WorkoutPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutFB.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(WorkoutPage.this, WorkoutFB.class);
+                startActivity(intent1);
             }
         });
         coretxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent2 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent2);
             }
         });
         shouldertxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent3 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent3);
             }
         });
         armtxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent4 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent4);
             }
         });
         chesttxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent5 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent5);
             }
         });
         backtxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent6 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent6);
             }
         });
         legtxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent7 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent7);
             }
         });
         powertxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent8 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent8);
             }
         });
         cardiotxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent9 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent9);
             }
         });
         customizetxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent);
+                Intent intent10 = new Intent(WorkoutPage.this, WorkoutCore.class);
+                startActivity(intent10);
             }
         });
         fullbody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutFB.class);
-                startActivity(intent);
+                Intent intent11 = new Intent(WorkoutPage.this,WorkoutFB.class);
+                startActivity(intent11);
             }
         });
         core.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent12 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent12);
             }
         });
         shoulder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent13 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent13);
             }
         });
         arm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent14 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent14);
             }
         });
         chest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent15 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent15);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent16 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent16);
             }
         });
         leg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent17 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent17);
             }
         });
         power.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent18 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent18);
             }
         });
         cardio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent19 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent19);
             }
         });
         customize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent);
+                Intent intent20 = new Intent(WorkoutPage.this,WorkoutCore.class);
+                startActivity(intent20);
             }
         });
 

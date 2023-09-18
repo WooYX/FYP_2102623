@@ -7,13 +7,18 @@ import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.fitness.FitnessOptions;
@@ -32,6 +37,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.fitness.FitnessOptions;
 import com.google.android.gms.fitness.data.DataType;
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -42,16 +49,77 @@ public class TryGoogleAPI extends AppCompatActivity {
     private TextView tvFitnessData;
     private Button btnGetData;
     private static final int PERMISSION_ACTIVITY_RECOGNITION = 1;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+
+    public boolean onOptionsItemSelected( MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_try_google_api);
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navigationView);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_Open, R.string.menu_close);
+
         // Find views by their respective IDs
         Button btnSignIn = findViewById(R.id.btnSignIn);
         btnGetData = findViewById(R.id.btnGetData);
         tvFitnessData = findViewById(R.id.tvFitnessData);
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        Intent intent1 = new Intent(TryGoogleAPI.this, MainActivity.class);
+                        startActivity(intent1);
+                        Log.i("MENU_DRAWER_TAG", "Home item is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_workout:
+                        Intent intent2 = new Intent(TryGoogleAPI.this, WorkoutPage.class);
+                        startActivity(intent2);
+                        Log.i("MENU_DRAWER_TAG", "Workout item is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_Info:
+                        Intent intent3 = new Intent(TryGoogleAPI.this, PersonalInfo.class);
+                        startActivity(intent3);
+                        Log.i("MENU_DRAWER_TAG", "Info item is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_Motive:
+                        Intent intent4 = new Intent(TryGoogleAPI.this, Motivational.class);
+                        startActivity(intent4);
+                        Log.i("MENU_DRAWER_TAG", "Motive item is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_GnS:
+                        Intent intent5 = new Intent(TryGoogleAPI.this, SNG.class);
+                        startActivity(intent5);
+                        Log.i("MENU_DRAWER_TAG", "Group item is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                }
+                return true;
+            }
+        });
 
         setupGoogleSignIn();
         // Configure the sign-in options
@@ -80,7 +148,10 @@ public class TryGoogleAPI extends AppCompatActivity {
         // Set click listener for the Get Data button
         btnGetData.setOnClickListener(v -> getFitnessData());
 
+
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,

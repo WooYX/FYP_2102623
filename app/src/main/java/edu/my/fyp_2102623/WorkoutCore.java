@@ -18,7 +18,7 @@ public class WorkoutCore extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workoutfb);
+        setContentView(R.layout.activity_full_body_workout);
         //load animation
         animimpage = AnimationUtils.loadAnimation(this, R.anim.animimpage);
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
