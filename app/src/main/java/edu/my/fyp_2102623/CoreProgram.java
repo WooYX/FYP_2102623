@@ -37,12 +37,12 @@ public class CoreProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_body_program);
+        setContentView(R.layout.activity_core_programe);
 
-        gifImageList = new int[]{R.drawable.planks, R.drawable.legraises, R.drawable.russiantwists,
+        gifImageList = new int[]{R.drawable.bicyclecrunches,R.drawable.planks, R.drawable.legraises, R.drawable.russiantwists,
                 R.drawable.mountainclimbers, R.drawable.vups, R.drawable.hanginglegraises,
                 R.drawable.crunches, R.drawable.plankvariations,R.drawable.flutterkicks};
-        NameList = new String[]{"Planks","Leg Raises ","Russian Twists","Mountain Climbers","V-Ups "
+        NameList = new String[]{"Bicycle Crunches","Planks","Leg Raises ","Russian Twists","Mountain Climbers","V-Ups "
                 ,"Hanging Leg Raises","Crunches","Plank Variations","Flutter Kicks"};
         currentIndex = 0;
 

@@ -39,8 +39,8 @@ public class FullBodyProgram extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_body_program);
 
-        gifImageList = new int[]{R.drawable.squatjumps, R.drawable.mountainclimbers, R.drawable.plankjacks, R.drawable.pushups, R.drawable.lunges, R.drawable.russiantwists, R.drawable.mountainclimbers, R.drawable.wallsit, R.drawable.deadlifts};
-        NameList = new String[]{"Squat Jumps", "mountainclimbers","plankjacks", "pushups", "lunges", "russiantwists", "mountainclimbers", "wallsit","deadlifts"};
+        gifImageList = new int[]{R.drawable.burpee,R.drawable.squatjumps, R.drawable.mountainclimbers, R.drawable.plankjacks, R.drawable.pushups, R.drawable.lunges, R.drawable.russiantwists, R.drawable.mountainclimbers, R.drawable.wallsit, R.drawable.deadlifts};
+        NameList = new String[]{"Burpees","Squat Jumps", "mountainclimbers","plankjacks", "pushups", "lunges", "russiantwists", "mountainclimbers", "wallsit","deadlifts"};
         currentIndex = 0;
 
         //load animation
