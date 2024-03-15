@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 public class WorkoutPage extends AppCompatActivity {
 
-    TextView CWP, fullbodytxt, coretxt, shouldertxt, armtxt, chesttxt, backtxt, legtxt, powertxt, cardiotxt, customizetxt;
+    TextView CWP, fullbodytxt, coretxt, timertxt, armtxt, chesttxt, backtxt, legtxt, customizetxt;
     Animation animimpage, bttone, bttwo, btthree, ltr;
-    ImageView fullbody, core, shoulder, arm, chest, back, leg, power, cardio, customize;
+    ImageView fullbody, core, arm, chest, back, leg, customize,timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +30,20 @@ public class WorkoutPage extends AppCompatActivity {
         CWP = (TextView) findViewById(R.id.CWP);
         fullbodytxt = (TextView) findViewById(R.id.fullbodytxt);
         coretxt = (TextView) findViewById(R.id.coretxt);
-        shouldertxt = (TextView) findViewById(R.id.shouldertxt);
+        timertxt = (TextView) findViewById(R.id.timertxt);
         armtxt = (TextView) findViewById(R.id.armtxt);
         chesttxt = (TextView) findViewById(R.id.chesttxt);
         backtxt = (TextView) findViewById(R.id.backtxt);
         legtxt = (TextView) findViewById(R.id.legtxt);
-        powertxt = (TextView) findViewById(R.id.powertxt);
-        cardiotxt = (TextView) findViewById(R.id.cardiotxt);
         customizetxt = (TextView) findViewById(R.id.customizetxt);
 
         fullbody = (ImageView) findViewById(R.id.fullbody);
         core = (ImageView) findViewById(R.id.core);
-        shoulder = (ImageView) findViewById(R.id.shoulder);
+        timer = (ImageView) findViewById(R.id.timer);
         arm = (ImageView) findViewById(R.id.arm);
         chest = (ImageView) findViewById(R.id.chest);
         back = (ImageView) findViewById(R.id.back);
         leg = (ImageView) findViewById(R.id.leg);
-        power = (ImageView) findViewById(R.id.power);
-        cardio = (ImageView) findViewById(R.id.cardio);
         customize = (ImageView) findViewById(R.id.customize);
 
 
@@ -67,7 +63,7 @@ public class WorkoutPage extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        shouldertxt.setOnClickListener(new View.OnClickListener() {
+        timertxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
@@ -107,20 +103,12 @@ public class WorkoutPage extends AppCompatActivity {
                 startActivity(intent7);
             }
         });
-        powertxt.setOnClickListener(new View.OnClickListener() {
+        timertxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
                 Intent intent8 = new Intent(WorkoutPage.this, WorkoutCore.class);
                 startActivity(intent8);
-            }
-        });
-        cardiotxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent9 = new Intent(WorkoutPage.this, WorkoutCore.class);
-                startActivity(intent9);
             }
         });
         customizetxt.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +135,7 @@ public class WorkoutPage extends AppCompatActivity {
                 startActivity(intent12);
             }
         });
-        shoulder.setOnClickListener(new View.OnClickListener() {
+        timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
@@ -187,22 +175,6 @@ public class WorkoutPage extends AppCompatActivity {
                 startActivity(intent17);
             }
         });
-        power.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent18 = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent18);
-            }
-        });
-        cardio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent19 = new Intent(WorkoutPage.this,WorkoutCore.class);
-                startActivity(intent19);
-            }
-        });
         customize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -214,23 +186,20 @@ public class WorkoutPage extends AppCompatActivity {
 
         fullbodytxt.startAnimation(bttone);
         coretxt.startAnimation(bttone);
-        shouldertxt.startAnimation(bttone);
+        timertxt.startAnimation(bttone);
         armtxt.startAnimation(bttone);
         chesttxt.startAnimation(bttone);
         backtxt.startAnimation(bttone);
         legtxt.startAnimation(bttone);
-        powertxt.startAnimation(bttone);
-        cardiotxt.startAnimation(bttone);
+        timertxt.startAnimation(bttone);
         customizetxt.startAnimation(bttone);
         fullbody.startAnimation(bttwo);
         core.startAnimation(bttwo);
-        shoulder.startAnimation(bttwo);
+        timer.startAnimation(bttwo);
         arm.startAnimation(bttwo);
         chest.startAnimation(bttwo);
         back.startAnimation(bttwo);
         leg.startAnimation(bttwo);
-        power.startAnimation(bttwo);
-        cardio.startAnimation(bttwo);
         customize.startAnimation(bttwo);
 
 

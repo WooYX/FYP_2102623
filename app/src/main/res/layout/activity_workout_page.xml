@@ -93,12 +93,12 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/shoulder"
+                        android:id="@+id/leg"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_weight="1"
-                        android:background="#EA80FC"
-                        app:srcCompat="@drawable/shoulder" />
+                        android:background="#80D8FF"
+                        app:srcCompat="@drawable/leg" />
 
                     <ImageView
                         android:id="@+id/arm"
@@ -115,17 +115,17 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/shouldertxt"
+                        android:id="@+id/legtxt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Shoulder Workout"
+                        android:text="Leg Workout"
                         android:textAlignment="center"
                         android:fontFamily="@font/mmedium"
                         android:lineSpacingExtra="8dp"
                         android:textColor="#FFFFFF"
                         android:textSize="20sp"
-                        android:background="#4A148C"/>
+                        android:background="#01579B"/>
 
                     <TextView
                         android:id="@+id/armtxt"
@@ -193,69 +193,21 @@
                         android:background="#0D47A1"/>
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/leg"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_weight="1"
-                        android:background="#80D8FF"
-                        app:srcCompat="@drawable/leg" />
 
-                    <ImageView
-                        android:id="@+id/power"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_weight="1"
-                        android:background="#84FFFF"
-                        app:srcCompat="@drawable/powertraining" />
-                </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/legtxt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Leg Workout"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/mmedium"
-                        android:lineSpacingExtra="8dp"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20sp"
-                        android:background="#01579B"/>
-
-                    <TextView
-                        android:id="@+id/powertxt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Power Training"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/mmedium"
-                        android:lineSpacingExtra="8dp"
-                        android:textColor="#FFFFFF"
-                        android:textSize="20sp"
-                        android:background="#006064"/>
-                </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/cardio"
+                        android:id="@+id/timer"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_weight="1"
                         android:background="#A7FFEB"
-                        app:srcCompat="@drawable/cardio" />
+                        app:srcCompat="@drawable/timer" />
 
                     <ImageView
                         android:id="@+id/customize"
@@ -271,11 +223,11 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/cardiotxt"
+                        android:id="@+id/timertxt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Cardio"
+                        android:text="Timer"
                         android:textAlignment="center"
                         android:fontFamily="@font/mmedium"
                         android:lineSpacingExtra="8dp"

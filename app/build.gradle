@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "edu.my.fyp_2102623"
         minSdk 26
-        targetSdk 31
+        targetSdk 34
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -23,6 +23,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'edu.my.fyp_2102623'
 }
 
 dependencies {
