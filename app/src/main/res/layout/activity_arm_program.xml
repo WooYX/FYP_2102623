@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ArmProgram">
+
+    <LinearLayout
+        android:id="@+id/fitone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/fbgif"
+            android:layout_width="357dp"
+            android:layout_height="277dp"
+            android:src="@drawable/nts" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divpage"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#25293E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fitone" />
+
+    <TextView
+        android:id="@+id/introPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mlight"
+        android:lineSpacingExtra="8dp"
+        android:text="How to Do"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fitone" />
+
+    <TextView
+        android:id="@+id/subintroPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/mmedium"
+        android:lineSpacingExtra="8dp"
+        android:text="Click Next to Start workout program"
+        android:textColor="#4C5067"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/introPage" />
+
+    <TextView
+        android:id="@+id/timerValue"
+        android:layout_width="199dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="00:00"
+        android:textColor="#FFFFFF"
+        android:textSize="68sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divpage" />
+
+    <ImageView
+        android:id="@+id/imgtimer"
+        android:layout_width="294dp"
+        android:layout_height="256dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/emptytimer1"
+        app:flow_firstHorizontalBias="0.493"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divpage" />
+
+
+    <View
+        android:id="@+id/Progress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FF8892"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="Next Workout!"
+        android:background="#B388FF"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="Pause"
+        android:background="#8C9EFF"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnExercise"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="Play"
+        android:background="#B388FF"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnExercise" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
+            android:name=".ArmProgram"
+            android:exported="false" />
+        <activity
             android:name=".BackWorkout"
             android:exported="false" />
         <activity

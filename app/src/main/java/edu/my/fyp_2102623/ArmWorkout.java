@@ -44,7 +44,7 @@ public class ArmWorkout extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(ArmWorkout.this, CoreProgram.class);
+                Intent intent = new Intent(ArmWorkout.this, ArmProgram.class);
                 startActivity(intent);
             }
         });
