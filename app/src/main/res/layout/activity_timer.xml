@@ -4,40 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/purple_200"
     tools:context=".Timer">
 
-    <LinearLayout
-        android:id="@+id/fitone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/fbgif"
-            android:layout_width="357dp"
-            android:layout_height="277dp"
-            android:src="@drawable/nts" />
-
-    </LinearLayout>
 
     <View
         android:id="@+id/divpage"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="24dp"
         android:background="#25293E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fitone" />
+        app:layout_constraintTop_toTopOf="@id/introPage" />
 
     <TextView
         android:id="@+id/introPage"
@@ -45,13 +27,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/mlight"
         android:lineSpacingExtra="8dp"
-        android:text="How to Do"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:fontFamily="@font/vidaloka"
+        android:text="Timer Clock"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBottomOf="@id/divpage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fitone" />
+        app:layout_constraintTop_toBottomOf="@id/divpage"/>
 
     <TextView
         android:id="@+id/subintroPage"
@@ -62,7 +46,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mmedium"
         android:lineSpacingExtra="8dp"
-        android:text="Click Next to Start workout program"
+        android:text="Set up your own time for your workout"
         android:textColor="#4C5067"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,28 +82,181 @@
         app:layout_constraintTop_toBottomOf="@id/divpage" />
 
 
+
+
+
+
+    <TextView
+        android:id="@+id/btnSetTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="320dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="Set Time (from clock)"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TableLayout
+        android:id="@+id/quickTimeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btnSetTime">
+
+        <!-- Row 1 -->
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv30Secs"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="30s"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv1Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="1m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv2Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="2m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv3Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="3m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <!-- Row 2 -->
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv5Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="5m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv7Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="7m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv10Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="10m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tv15Min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="15m"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/btnHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="Home"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quickTimeLayout" />
+
+    <TextView
+        android:id="@+id/btnEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/vidaloka"
+        android:text="End Timer"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnHome" />
     <View
         android:id="@+id/Progress"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="#FF8892"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/btnExercise"
+        android:id="@+id/btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/vidaloka"
-        android:text="Next Workout!"
-        android:background="#B388FF"
+        android:text="Reset!"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="22sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -133,12 +270,11 @@
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/vidaloka"
         android:text="Pause"
-        android:background="#8C9EFF"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="22sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnExercise"
+        app:layout_constraintEnd_toStartOf="@id/btnReset"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -150,13 +286,12 @@
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/vidaloka"
         android:text="Play"
-        android:background="#B388FF"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="22sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnExercise" />
+        app:layout_constraintStart_toEndOf="@id/btnReset" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

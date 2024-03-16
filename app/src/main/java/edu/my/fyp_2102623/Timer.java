@@ -2,6 +2,7 @@ package edu.my.fyp_2102623;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,42 +12,35 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 import pl.droidsonroids.gif.GifImageView;
 
 public class Timer extends AppCompatActivity {
 
-    TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
+    TextView introPage, subintroPage, timerValue, btnReset, btnPlay, btnPause,btnSetTime,btnHome,btnEnd;
+    TextView tv30Secs, tv1Min, tv2Min,tv3Min, tv5Min,tv7Min, tv10Min, tv15Min;
+
     View divpage, Progress;
-    LinearLayout fitone;
     ImageView imgtimer;
-    GifImageView fbgif;
+
+
     private boolean btnPlayClicked;
-    private static final long START_TIME_IN_MILLIS = 35000;
+    private static final long START_TIME_IN_MILLIS = 60000;
     private CountDownTimer countDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
-    private int[] gifImageList;
-    private String[] NameList;
     Animation animimpage, bttone, bttwo, btthree, alphagogo;
-    private int currentIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
-        gifImageList = new int[]{R.drawable.squats, R.drawable.lunges,
-                R.drawable.bulgariansplitsquat, R.drawable.glutebridges,
-                R.drawable.wallsit, R.drawable.boxjumps, R.drawable.stepups,
-                R.drawable.lunges, R.drawable.calfraises, R.drawable.pistolsquats};
-        NameList = new String[]{ "Squats ", "Lunges ", "Bulgarian Split Squats ", "Glute Bridges ", "Wall Sit ", "Box Jumps ",  "Step-Ups ",  "Lunges ",   "Calf Raises ", "Pistol Squats"};
-        currentIndex = 0;
-
-        //load animation
         animimpage = AnimationUtils.loadAnimation(this, R.anim.animimpage);
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
         bttwo = AnimationUtils.loadAnimation(this, R.anim.bttwo);
@@ -59,17 +53,25 @@ public class Timer extends AppCompatActivity {
         divpage = (View) findViewById(R.id.divpage);
         Progress = (View) findViewById(R.id.Progress);
         timerValue = (TextView) findViewById(R.id.timerValue);
-        fitone = (LinearLayout) findViewById(R.id.fitone);
-        btnExercise = (TextView) findViewById(R.id.btnExercise);
+        btnReset = (TextView) findViewById(R.id.btnReset);
         imgtimer = (ImageView) findViewById(R.id.imgtimer);
         btnPause = (TextView) findViewById(R.id.btnPause);
         btnPlay = (TextView) findViewById(R.id.btnPlay);
-        fbgif = (GifImageView) findViewById(R.id.fbgif);
+        btnSetTime=(TextView) findViewById(R.id.btnSetTime);
+        btnHome=(TextView)findViewById(R.id.btnHome) ;
+        btnEnd=(TextView)findViewById(R.id.btnEnd) ;
+        tv30Secs = findViewById(R.id.tv30Secs);
+        tv1Min = findViewById(R.id.tv1Min);
+        tv2Min = findViewById(R.id.tv2Min);
+        tv3Min = findViewById(R.id.tv3Min);
+        tv5Min = findViewById(R.id.tv5Min);
+        tv7Min = findViewById(R.id.tv7Min);
+        tv10Min = findViewById(R.id.tv10Min);
+        tv15Min = findViewById(R.id.tv15Min);
 
         //assign animation
-        btnExercise.startAnimation(btthree);
+        btnReset.startAnimation(btthree);
         Progress.startAnimation(btthree);
-        fitone.startAnimation(bttone);
         introPage.startAnimation(bttwo);
         subintroPage.startAnimation(bttwo);
         divpage.startAnimation(bttwo);
@@ -79,14 +81,10 @@ public class Timer extends AppCompatActivity {
         btnPlay.startAnimation(btthree);
 
 
-        startTimer();
-
-        btnExercise.setOnClickListener(new View.OnClickListener() {
+        btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetTimer();
-                startTimer();
-                changeExerciseImage();
             }
         });
 
@@ -103,26 +101,95 @@ public class Timer extends AppCompatActivity {
                 startTimer();
             }
         });
-    }
 
-    private void changeExerciseImage() {
-        if (currentIndex >= gifImageList.length) {
-            // All GIFs have been displayed, navigate to EndWorkout activity
-            pauseTimer();
-            Intent intent = new Intent(Timer.this, EndWorkout.class);
-            startActivity(intent);
-            finish(); // Optional, if you want to close the current activity after navigation
-            return;
-        }
+        btnSetTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog();
+            }
+        });
 
-        fbgif.setImageResource(gifImageList[currentIndex]);
-        subintroPage.setText(NameList[currentIndex]);
-        currentIndex++;
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click event for the "Home" button
+                Intent intent = new Intent(Timer.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click event for the "Home" button
+                Intent intent = new Intent(Timer.this, EndWorkout.class);
+                startActivity(intent);
+            }
+        });
+        // Set click listeners for each TextView
+        tv30Secs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(30000); // 30 seconds
+            }
+        });
+
+        tv1Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(60000); // 1 minute
+            }
+        });
+
+        tv2Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(120000); // 2 minutes
+            }
+        });
+
+        tv3Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(180000); // 3 minutes
+            }
+        });
+
+        tv7Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(420000); // 7 minutes
+            }
+        });
+
+        tv5Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(300000); // 5 minutes
+            }
+        });
+
+        tv10Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(600000); // 10 minutes
+            }
+        });
+
+        tv15Min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTimer(900000); // 15 minutes
+            }
+        });
+
     }
 
     private void resetTimer() {
         // Cancel the existing timer
-        countDownTimer.cancel();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
 
         // Reset the timer values
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
@@ -130,12 +197,8 @@ public class Timer extends AppCompatActivity {
 
         // Update the countdown text
         updateCountDownText();
-
-        // Restart the timer if the "Play" button was clicked
-        if (btnPlayClicked) {
-            startTimer();
-        }
     }
+
 
     private void pauseTimer() {
         if (mTimerRunning) {
@@ -154,7 +217,7 @@ public class Timer extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                btnExercise.performClick(); // Simulate a click on btnExercise
+                btnReset.performClick(); // Simulate a click on btnExercise
             }
         }.start();
         mTimerRunning = true;
@@ -167,4 +230,39 @@ public class Timer extends AppCompatActivity {
         String timeLeft = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         timerValue.setText(timeLeft);
     }
+
+    private void showTimePickerDialog() {
+        // Get the current time
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        // Create a time picker dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(Timer.this,
+                (view, hourOfDay, minute1) -> {
+                    // Calculate the total time in milliseconds
+                    long totalTimeInMillis = (hourOfDay * 3600 + minute1 * 60) * 1000;
+
+                    // Update the countdown timer with the new time
+                    updateTimer(totalTimeInMillis);
+                }, hour, minute, true);
+
+        // Show the time picker dialog
+        timePickerDialog.show();
+    }
+
+    private void updateTimer(long totalTimeInMillis) {
+        // Cancel the existing timer
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+
+        // Reset the timer values
+        mTimeLeftInMillis = totalTimeInMillis;
+        mTimerRunning = false;
+
+        // Update the countdown text
+        updateCountDownText();
+    }
+
 }
