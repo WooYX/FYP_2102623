@@ -17,7 +17,7 @@ import java.util.Locale;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class ArmProgram extends AppCompatActivity {
+public class BackProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +37,13 @@ public class ArmProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arm_program);
+        setContentView(R.layout.activity_back_program);
 
-        gifImageList = new int[]{R.drawable.diamondpushups, R.drawable.dipschair,
-                R.drawable.pushupvariations, R.drawable.tricepdips,
-                R.drawable.armcircles, R.drawable.inclinepushups, R.drawable.dipschair,
-                R.drawable.bicepcurls, R.drawable.tricepextensions, R.drawable.hammercurls};
-        NameList = new String[]{"Diamond Push-Ups ", "Chair Dips ", "Push-Up Variations ", "Tricep Dips ", "Arm Circles ", "Incline Push-Ups ", "Chair Dips ", "Bicep Curls ", "Tricep Extensions ", "Hammer Curls "};
+        gifImageList = new int[]{R.drawable.pullups, R.drawable.bodyweightrows,
+                R.drawable.invertedrows, R.drawable.commandopullups,
+                R.drawable.aboveheadstretches, R.drawable.chinups, R.drawable.latpulldowns,
+                R.drawable.negativepullup, R.drawable.onearmrow, R.drawable.scapularpullups};
+        NameList = new String[]{ "Pull-Ups ",  "Bodyweight Rows ",  "Inverted Rows ", "Commando Pull-Ups ","Above Head Stretches ", "Chin-Ups (Pull-up bar)", "Bodyweight Lat Pulldowns ","Negative Pull-Ups ","One-Arm Row ", "Scapular Pull-Ups "};
         currentIndex = 0;
 
         //load animation
@@ -109,7 +109,7 @@ public class ArmProgram extends AppCompatActivity {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(ArmProgram.this, EndWorkout.class);
+            Intent intent = new Intent(BackProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;

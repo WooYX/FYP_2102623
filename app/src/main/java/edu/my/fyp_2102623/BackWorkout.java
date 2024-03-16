@@ -41,7 +41,7 @@ public class BackWorkout extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(BackWorkout.this, CoreProgram.class);
+                Intent intent = new Intent(BackWorkout.this, BackProgram.class);
                 startActivity(intent);
             }
         });

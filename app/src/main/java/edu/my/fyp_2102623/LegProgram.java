@@ -17,7 +17,7 @@ import java.util.Locale;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class ArmProgram extends AppCompatActivity {
+public class LegProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +37,13 @@ public class ArmProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arm_program);
+        setContentView(R.layout.activity_leg_program);
 
-        gifImageList = new int[]{R.drawable.diamondpushups, R.drawable.dipschair,
-                R.drawable.pushupvariations, R.drawable.tricepdips,
-                R.drawable.armcircles, R.drawable.inclinepushups, R.drawable.dipschair,
-                R.drawable.bicepcurls, R.drawable.tricepextensions, R.drawable.hammercurls};
-        NameList = new String[]{"Diamond Push-Ups ", "Chair Dips ", "Push-Up Variations ", "Tricep Dips ", "Arm Circles ", "Incline Push-Ups ", "Chair Dips ", "Bicep Curls ", "Tricep Extensions ", "Hammer Curls "};
+        gifImageList = new int[]{R.drawable.squats, R.drawable.lunges,
+                R.drawable.bulgariansplitsquat, R.drawable.glutebridges,
+                R.drawable.wallsit, R.drawable.boxjumps, R.drawable.stepups,
+                R.drawable.lunges, R.drawable.calfraises, R.drawable.pistolsquats};
+        NameList = new String[]{ "Squats ", "Lunges ", "Bulgarian Split Squats ", "Glute Bridges ", "Wall Sit ", "Box Jumps ",  "Step-Ups ",  "Lunges ",   "Calf Raises ", "Pistol Squats"};
         currentIndex = 0;
 
         //load animation
@@ -109,7 +109,7 @@ public class ArmProgram extends AppCompatActivity {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(ArmProgram.this, EndWorkout.class);
+            Intent intent = new Intent(LegProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;

@@ -17,7 +17,7 @@ import java.util.Locale;
 
 import pl.droidsonroids.gif.GifImageView;
 
-public class ArmProgram extends AppCompatActivity {
+public class ChestProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +37,13 @@ public class ArmProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arm_program);
+        setContentView(R.layout.activity_chest_program);
 
-        gifImageList = new int[]{R.drawable.diamondpushups, R.drawable.dipschair,
-                R.drawable.pushupvariations, R.drawable.tricepdips,
-                R.drawable.armcircles, R.drawable.inclinepushups, R.drawable.dipschair,
-                R.drawable.bicepcurls, R.drawable.tricepextensions, R.drawable.hammercurls};
-        NameList = new String[]{"Diamond Push-Ups ", "Chair Dips ", "Push-Up Variations ", "Tricep Dips ", "Arm Circles ", "Incline Push-Ups ", "Chair Dips ", "Bicep Curls ", "Tricep Extensions ", "Hammer Curls "};
+        gifImageList = new int[]{R.drawable.pushups, R.drawable.inclinepushups,
+                R.drawable.pushupvariations, R.drawable.pushups,
+                R.drawable.dips, R.drawable.declinepushups, R.drawable.chestpress,
+                R.drawable.pushupvariations, R.drawable.diamondpushups, R.drawable.pushups};
+        NameList = new String[]{ "Push-Ups ", "Incline Push-Ups ","Push-Up Variations ","Push-Ups ", "Dips ", "Decline Push-Ups ",  "Chest Press ","Push-Up Variations ",   "Diamond Push-Ups ","Push-Ups "};
         currentIndex = 0;
 
         //load animation
@@ -109,7 +109,7 @@ public class ArmProgram extends AppCompatActivity {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(ArmProgram.this, EndWorkout.class);
+            Intent intent = new Intent(ChestProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;

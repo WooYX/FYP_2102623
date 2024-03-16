@@ -99,7 +99,7 @@ public class WorkoutPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent7 = new Intent(WorkoutPage.this,LegWorkout.class);
+                Intent intent7 = new Intent(WorkoutPage.this, LegWorkout.class);
                 startActivity(intent7);
             }
         });

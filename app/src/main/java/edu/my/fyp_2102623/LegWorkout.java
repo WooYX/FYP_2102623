@@ -35,12 +35,14 @@ public class LegWorkout extends AppCompatActivity {
         // Set up the RecyclerView with the adapter
         workoutAdapter = new WorkoutAdapter(allWorkouts);
         recyclerViewWorkouts.setAdapter(workoutAdapter);
+        BtnExerciseFull=(TextView)findViewById(R.id.btnExerciseFull);
+
 
         BtnExerciseFull.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(LegWorkout.this, CoreProgram.class);
+                Intent intent = new Intent(LegWorkout.this, LegProgram.class);
                 startActivity(intent);
             }
         });

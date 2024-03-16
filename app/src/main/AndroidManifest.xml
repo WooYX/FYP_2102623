@@ -19,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
+            android:name=".LegProgram"
+            android:exported="false" />
+        <activity
+            android:name=".ChestProgram"
+            android:exported="false" />
+        <activity
+            android:name=".BackProgram"
+            android:exported="false" />
+        <activity
             android:name=".ArmProgram"
             android:exported="false" />
         <activity
