@@ -107,7 +107,7 @@ public class WorkoutPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent8 = new Intent(WorkoutPage.this, AutoWorkout.class);
+                Intent intent8 = new Intent(WorkoutPage.this, Timer.class);
                 startActivity(intent8);
             }
         });
@@ -139,7 +139,7 @@ public class WorkoutPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent13 = new Intent(WorkoutPage.this,AutoWorkout.class);
+                Intent intent13 = new Intent(WorkoutPage.this,Timer.class);
                 startActivity(intent13);
             }
         });

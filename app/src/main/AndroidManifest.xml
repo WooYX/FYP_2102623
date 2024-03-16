@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
+            android:name=".Timer"
+            android:exported="false" />
+        <activity
             android:name=".LegProgram"
             android:exported="false" />
         <activity
