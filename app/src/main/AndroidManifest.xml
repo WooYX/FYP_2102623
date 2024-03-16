@@ -19,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
+            android:name=".BackWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".ChestWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".ArmWorkout"
+            android:exported="false" />
+        <activity
             android:name=".AutoWorkout"
             android:exported="false" />
         <activity
@@ -35,6 +44,9 @@
             android:exported="false" />
         <activity
             android:name=".FullBodyProgram"
+            android:exported="false" />
+        <activity
+            android:name=".LegWorkout"
             android:exported="false" />
         <activity
             android:name=".WorkoutFB"

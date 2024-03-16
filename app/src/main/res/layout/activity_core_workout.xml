@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/teal_200"
     tools:context=".WorkoutCore">
 
 
@@ -29,7 +29,7 @@
                 android:fontFamily="@font/mlight"
                 android:lineSpacingExtra="8dp"
                 android:text="Core Workout"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black"
                 android:textSize="38sp" />
 
             <TextView
@@ -63,7 +63,7 @@
                 android:fontFamily="@font/mlight"
                 android:lineSpacingExtra="8dp"
                 android:text="Introduction"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Bicycle Crunches"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -151,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Planks"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -196,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Leg Raises"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -241,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Russian Twists"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -286,7 +286,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Mountain Climbers"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -331,7 +331,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="V-Ups"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -376,7 +376,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Hanging Leg Raises "
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -421,7 +421,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text=" Crunches"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -466,7 +466,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Plank Variations"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -511,7 +511,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mlight"
                         android:text="Flutter Kicks"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#@color/black"
                         android:textSize="20sp" />
 
                     <TextView
@@ -569,7 +569,7 @@
         android:fontFamily="@font/vidaloka"
         android:text="Start Workout!"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#@color/black"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
