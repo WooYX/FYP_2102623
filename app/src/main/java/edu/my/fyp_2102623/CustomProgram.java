@@ -1,9 +1,14 @@
 package edu.my.fyp_2102623;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -11,6 +16,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -39,12 +46,9 @@ public class CustomProgram extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_program);
 
-        gifImageList = new int[]{R.drawable.squats, R.drawable.lunges,
-                R.drawable.bulgariansplitsquat, R.drawable.glutebridges,
-                R.drawable.wallsit, R.drawable.boxjumps, R.drawable.stepups,
-                R.drawable.lunges, R.drawable.calfraises, R.drawable.pistolsquats};
-        NameList = new String[]{ "Squats ", "Lunges ", "Bulgarian Split Squats ", "Glute Bridges ", "Wall Sit ", "Box Jumps ",  "Step-Ups ",  "Lunges ",   "Calf Raises ", "Pistol Squats"};
         currentIndex = 0;
+
+
 
         //load animation
         animimpage = AnimationUtils.loadAnimation(this, R.anim.animimpage);
@@ -87,7 +91,7 @@ public class CustomProgram extends AppCompatActivity {
         btnPause.startAnimation(btthree);
         btnPlay.startAnimation(btthree);
 
-
+        loadWorkoutsFromSharedPreferences();
         startTimer();
 
         btnExercise.setOnClickListener(new View.OnClickListener() {
@@ -195,18 +199,29 @@ public class CustomProgram extends AppCompatActivity {
     }
 
     private void changeExerciseImage() {
-        if (currentIndex >= gifImageList.length) {
-            // All GIFs have been displayed, navigate to EndWorkout activity
-            pauseTimer();
-            Intent intent = new Intent(CustomProgram.this, EndWorkout.class);
-            startActivity(intent);
-            finish(); // Optional, if you want to close the current activity after navigation
+        // Check if the shared preferences were initially empty, indicated by gifImageList and NameList not being initialized or being empty
+        if (gifImageList == null || gifImageList.length == 0 || NameList == null || NameList.length == 0) {
+            // If there are no workouts to display, go directly to the EndWorkout activity
+            navigateToEndWorkout();
             return;
         }
 
+        if (currentIndex >= gifImageList.length) {
+            // If all workouts have been displayed, also navigate to the EndWorkout activity
+            navigateToEndWorkout();
+            return;
+        }
+
+        // Otherwise, proceed to show the next workout
         fbgif.setImageResource(gifImageList[currentIndex]);
         subintroPage.setText(NameList[currentIndex]);
         currentIndex++;
+    }
+    private void navigateToEndWorkout() {
+        pauseTimer(); // Optional: Consider pausing or resetting the timer here if appropriate
+        Intent intent = new Intent(CustomProgram.this, EndWorkout.class);
+        startActivity(intent);
+        finish(); // Optional: Use this if you want to prevent users from navigating back to this activity
     }
     private void resetTimer() {
         // Cancel the existing timer
@@ -290,5 +305,37 @@ public class CustomProgram extends AppCompatActivity {
         // Update the countdown text
         updateCountDownText();
     }
+    private void loadWorkoutsFromSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("WorkoutPrefs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("workoutList", null); // Ensure this key matches the one used in Custom_Workout
+        Type type = new TypeToken<ArrayList<Workouts>>() {}.getType();
+        ArrayList<Workouts> loadedWorkouts = gson.fromJson(json, type);
+
+        if (loadedWorkouts == null || loadedWorkouts.isEmpty()) {
+            // If there are no workouts, display "No custom workout" and show the Saitama image
+            introPage.setText("No custom workout");
+            subintroPage.setText("No custom workout");
+            fbgif.setImageResource(R.drawable.saitama);
+            // Early return to skip trying to load non-existent workouts
+            return;
+        }
+
+        // Assuming gifImageList and NameList are to be filled here
+        gifImageList = new int[loadedWorkouts.size()];
+        NameList = new String[loadedWorkouts.size()];
+
+        for (int i = 0; i < loadedWorkouts.size(); i++) {
+            Workouts workout = loadedWorkouts.get(i);
+            NameList[i] = workout.getTitle();
+            gifImageList[i] = getResources().getIdentifier(workout.getImageName(), "drawable", getPackageName());
+        }
+
+        currentIndex = 0; // Reset to start showing from the first workout
+
+        // Optionally, preload the first workout if workouts are present
+        changeExerciseImage(); // Adjust this method if necessary
+    }
+
 
 }

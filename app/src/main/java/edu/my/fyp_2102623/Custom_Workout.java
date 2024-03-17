@@ -43,12 +43,7 @@ public class Custom_Workout extends AppCompatActivity {
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("WorkoutPrefs", MODE_PRIVATE);
-
-        // Load workouts from SharedPreferences or initialize with default values
-        loadWorkouts();
-        if (workouts.isEmpty()) {
-            initializeDefaultWorkouts();
-        }
+        initializeDefaultWorkouts();
 
         adapter = new CustomAdapter(this, workouts);
         listViewWorkouts.setAdapter(adapter);
@@ -195,7 +190,6 @@ public class Custom_Workout extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(WORKOUT_LIST_KEY);
         editor.apply();
-        workouts.clear();
         adapter.notifyDataSetChanged();
         Toast.makeText(this, "Workouts cleared", Toast.LENGTH_LONG).show();
     }
