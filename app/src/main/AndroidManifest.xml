@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
+            android:name=".CustomProgram"
+            android:exported="false" />
+        <activity
+            android:name=".Custom_Workout"
+            android:exported="false" />
+        <activity
             android:name=".Timer"
             android:exported="false" />
         <activity
