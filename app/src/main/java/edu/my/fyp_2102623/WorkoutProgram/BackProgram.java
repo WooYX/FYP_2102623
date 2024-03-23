@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.R;
 import pl.droidsonroids.gif.GifImageView;
 
-public class FullBodyProgram extends AppCompatActivity {
+public class BackProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,10 +38,13 @@ public class FullBodyProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_body_program);
+        setContentView(R.layout.activity_back_program);
 
-        gifImageList = new int[]{R.drawable.burpee,R.drawable.squatjumps, R.drawable.mountainclimbers, R.drawable.plankjacks, R.drawable.pushups, R.drawable.lunges, R.drawable.russiantwists, R.drawable.mountainclimbers, R.drawable.wallsit, R.drawable.deadlifts};
-        NameList = new String[]{"Burpees","Squat Jumps", "mountainclimbers","plankjacks", "pushups", "lunges", "russiantwists", "mountainclimbers", "wallsit","deadlifts"};
+        gifImageList = new int[]{R.drawable.pullups, R.drawable.bodyweightrows,
+                R.drawable.invertedrows, R.drawable.commandopullups,
+                R.drawable.aboveheadstretches, R.drawable.chinups, R.drawable.latpulldowns,
+                R.drawable.negativepullup, R.drawable.onearmrow, R.drawable.scapularpullups};
+        NameList = new String[]{ "Pull-Ups ",  "Bodyweight Rows ",  "Inverted Rows ", "Commando Pull-Ups ","Above Head Stretches ", "Chin-Ups (Pull-up bar)", "Bodyweight Lat Pulldowns ","Negative Pull-Ups ","One-Arm Row ", "Scapular Pull-Ups "};
         currentIndex = 0;
 
         //load animation
@@ -102,12 +106,11 @@ public class FullBodyProgram extends AppCompatActivity {
         });
     }
 
-
     private void changeExerciseImage() {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(FullBodyProgram.this, EndWorkout.class);
+            Intent intent = new Intent(BackProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;
@@ -117,8 +120,6 @@ public class FullBodyProgram extends AppCompatActivity {
         subintroPage.setText(NameList[currentIndex]);
         currentIndex++;
     }
-
-
 
     private void resetTimer() {
         // Cancel the existing timer
@@ -159,7 +160,6 @@ public class FullBodyProgram extends AppCompatActivity {
         }.start();
         mTimerRunning = true;
     }
-
 
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;

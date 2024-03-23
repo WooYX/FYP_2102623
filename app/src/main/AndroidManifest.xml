@@ -19,58 +19,58 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
-            android:name=".CustomProgram"
+            android:name=".WorkoutProgram.CustomProgram"
             android:exported="false" />
         <activity
-            android:name=".Custom_Workout"
+            android:name=".WorkoutModule.Custom_Workout"
             android:exported="false" />
         <activity
-            android:name=".Timer"
+            android:name=".WorkoutModule.Timer"
             android:exported="false" />
         <activity
-            android:name=".LegProgram"
+            android:name=".WorkoutProgram.LegProgram"
             android:exported="false" />
         <activity
-            android:name=".ChestProgram"
+            android:name=".WorkoutProgram.ChestProgram"
             android:exported="false" />
         <activity
-            android:name=".BackProgram"
+            android:name=".WorkoutProgram.BackProgram"
             android:exported="false" />
         <activity
-            android:name=".ArmProgram"
+            android:name=".WorkoutProgram.ArmProgram"
             android:exported="false" />
         <activity
-            android:name=".BackWorkout"
+            android:name=".WorkoutModule.BackWorkout"
             android:exported="false" />
         <activity
-            android:name=".ChestWorkout"
+            android:name=".WorkoutModule.ChestWorkout"
             android:exported="false" />
         <activity
-            android:name=".ArmWorkout"
+            android:name=".WorkoutModule.ArmWorkout"
             android:exported="false" />
         <activity
-            android:name=".AutoWorkout"
+            android:name=".WorkoutModule.AutoWorkout"
             android:exported="false" />
         <activity
-            android:name=".WorkoutCore"
+            android:name=".WorkoutModule.WorkoutCore"
             android:exported="false" />
         <activity
-            android:name=".CoreProgram"
+            android:name=".WorkoutProgram.CoreProgram"
             android:exported="false" />
         <activity
-            android:name=".EndWorkout"
+            android:name=".WorkoutModule.EndWorkout"
             android:exported="false" />
         <activity
             android:name=".TryGoogleAPI"
             android:exported="false" />
         <activity
-            android:name=".FullBodyProgram"
+            android:name=".WorkoutProgram.FullBodyProgram"
             android:exported="false" />
         <activity
-            android:name=".LegWorkout"
+            android:name=".WorkoutModule.LegWorkout"
             android:exported="false" />
         <activity
-            android:name=".WorkoutFB"
+            android:name=".WorkoutModule.WorkoutFB"
             android:exported="false" />
         <activity
             android:name=".Welcome"
@@ -91,7 +91,7 @@
             android:name=".PersonalInfo"
             android:exported="false" />
         <activity
-            android:name=".WorkoutPage"
+            android:name=".WorkoutModule.WorkoutPage"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

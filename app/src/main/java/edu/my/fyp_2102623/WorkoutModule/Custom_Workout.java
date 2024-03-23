@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutModule;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -18,6 +18,9 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import edu.my.fyp_2102623.R;
+import edu.my.fyp_2102623.WorkoutProgram.CustomProgram;
 
 public class Custom_Workout extends AppCompatActivity {
 

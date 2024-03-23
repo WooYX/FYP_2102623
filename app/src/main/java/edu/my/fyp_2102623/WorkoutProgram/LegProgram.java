@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.R;
 import pl.droidsonroids.gif.GifImageView;
 
-public class BackProgram extends AppCompatActivity {
+public class LegProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +38,13 @@ public class BackProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_back_program);
+        setContentView(R.layout.activity_leg_program);
 
-        gifImageList = new int[]{R.drawable.pullups, R.drawable.bodyweightrows,
-                R.drawable.invertedrows, R.drawable.commandopullups,
-                R.drawable.aboveheadstretches, R.drawable.chinups, R.drawable.latpulldowns,
-                R.drawable.negativepullup, R.drawable.onearmrow, R.drawable.scapularpullups};
-        NameList = new String[]{ "Pull-Ups ",  "Bodyweight Rows ",  "Inverted Rows ", "Commando Pull-Ups ","Above Head Stretches ", "Chin-Ups (Pull-up bar)", "Bodyweight Lat Pulldowns ","Negative Pull-Ups ","One-Arm Row ", "Scapular Pull-Ups "};
+        gifImageList = new int[]{R.drawable.squats, R.drawable.lunges,
+                R.drawable.bulgariansplitsquat, R.drawable.glutebridges,
+                R.drawable.wallsit, R.drawable.boxjumps, R.drawable.stepups,
+                R.drawable.lunges, R.drawable.calfraises, R.drawable.pistolsquats};
+        NameList = new String[]{ "Squats ", "Lunges ", "Bulgarian Split Squats ", "Glute Bridges ", "Wall Sit ", "Box Jumps ",  "Step-Ups ",  "Lunges ",   "Calf Raises ", "Pistol Squats"};
         currentIndex = 0;
 
         //load animation
@@ -109,7 +110,7 @@ public class BackProgram extends AppCompatActivity {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(BackProgram.this, EndWorkout.class);
+            Intent intent = new Intent(LegProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;

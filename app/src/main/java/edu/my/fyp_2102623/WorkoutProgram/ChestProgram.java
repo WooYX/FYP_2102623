@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.R;
 import pl.droidsonroids.gif.GifImageView;
 
-public class CoreProgram extends AppCompatActivity {
+public class ChestProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +38,13 @@ public class CoreProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_core_programe);
+        setContentView(R.layout.activity_chest_program);
 
-        gifImageList = new int[]{R.drawable.bicyclecrunches,R.drawable.planks, R.drawable.legraises, R.drawable.russiantwists,
-                R.drawable.mountainclimbers, R.drawable.vups, R.drawable.hanginglegraises,
-                R.drawable.crunches, R.drawable.plankvariations,R.drawable.flutterkicks};
-        NameList = new String[]{"Bicycle Crunches","Planks","Leg Raises ","Russian Twists","Mountain Climbers","V-Ups "
-                ,"Hanging Leg Raises","Crunches","Plank Variations","Flutter Kicks"};
+        gifImageList = new int[]{R.drawable.pushups, R.drawable.inclinepushups,
+                R.drawable.pushupvariations, R.drawable.pushups,
+                R.drawable.dips, R.drawable.declinepushups, R.drawable.chestpress,
+                R.drawable.pushupvariations, R.drawable.diamondpushups, R.drawable.pushups};
+        NameList = new String[]{ "Push-Ups ", "Incline Push-Ups ","Push-Up Variations ","Push-Ups ", "Dips ", "Decline Push-Ups ",  "Chest Press ","Push-Up Variations ",   "Diamond Push-Ups ","Push-Ups "};
         currentIndex = 0;
 
         //load animation
@@ -105,12 +106,11 @@ public class CoreProgram extends AppCompatActivity {
         });
     }
 
-
     private void changeExerciseImage() {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(CoreProgram.this, EndWorkout.class);
+            Intent intent = new Intent(ChestProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;
@@ -120,8 +120,6 @@ public class CoreProgram extends AppCompatActivity {
         subintroPage.setText(NameList[currentIndex]);
         currentIndex++;
     }
-
-
 
     private void resetTimer() {
         // Cancel the existing timer
@@ -162,7 +160,6 @@ public class CoreProgram extends AppCompatActivity {
         }.start();
         mTimerRunning = true;
     }
-
 
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;

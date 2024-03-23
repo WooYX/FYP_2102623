@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutModule;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class WorkoutFB extends AppCompatActivity {
+import edu.my.fyp_2102623.R;
+import edu.my.fyp_2102623.WorkoutProgram.CoreProgram;
+
+public class WorkoutCore extends AppCompatActivity {
 
     TextView welcomePage, subPage, introPage,subintroPage,BtnExerciseFull;
     Animation animimpage, bttone, bttwo, btthree, ltr;
@@ -18,8 +21,8 @@ public class WorkoutFB extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_body_workout);
-         //load animation
+        setContentView(R.layout.activity_core_workout);
+        //load animation
         animimpage = AnimationUtils.loadAnimation(this, R.anim.animimpage);
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
         bttwo = AnimationUtils.loadAnimation(this, R.anim.bttwo);
@@ -38,7 +41,7 @@ public class WorkoutFB extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent = new Intent(WorkoutFB.this, FullBodyProgram.class);
+                Intent intent = new Intent(WorkoutCore.this, CoreProgram.class);
                 startActivity(intent);
             }
         });

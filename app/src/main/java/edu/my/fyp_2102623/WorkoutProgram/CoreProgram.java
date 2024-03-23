@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.R;
 import pl.droidsonroids.gif.GifImageView;
 
-public class ArmProgram extends AppCompatActivity {
+public class CoreProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +38,13 @@ public class ArmProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arm_program);
+        setContentView(R.layout.activity_core_programe);
 
-        gifImageList = new int[]{R.drawable.diamondpushups, R.drawable.dipschair,
-                R.drawable.pushupvariations, R.drawable.tricepdips,
-                R.drawable.armcircles, R.drawable.inclinepushups, R.drawable.dipschair,
-                R.drawable.bicepcurls, R.drawable.tricepextensions, R.drawable.hammercurls};
-        NameList = new String[]{"Diamond Push-Ups ", "Chair Dips ", "Push-Up Variations ", "Tricep Dips ", "Arm Circles ", "Incline Push-Ups ", "Chair Dips ", "Bicep Curls ", "Tricep Extensions ", "Hammer Curls "};
+        gifImageList = new int[]{R.drawable.bicyclecrunches,R.drawable.planks, R.drawable.legraises, R.drawable.russiantwists,
+                R.drawable.mountainclimbers, R.drawable.vups, R.drawable.hanginglegraises,
+                R.drawable.crunches, R.drawable.plankvariations,R.drawable.flutterkicks};
+        NameList = new String[]{"Bicycle Crunches","Planks","Leg Raises ","Russian Twists","Mountain Climbers","V-Ups "
+                ,"Hanging Leg Raises","Crunches","Plank Variations","Flutter Kicks"};
         currentIndex = 0;
 
         //load animation
@@ -105,11 +106,12 @@ public class ArmProgram extends AppCompatActivity {
         });
     }
 
+
     private void changeExerciseImage() {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(ArmProgram.this, EndWorkout.class);
+            Intent intent = new Intent(CoreProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;
@@ -119,6 +121,8 @@ public class ArmProgram extends AppCompatActivity {
         subintroPage.setText(NameList[currentIndex]);
         currentIndex++;
     }
+
+
 
     private void resetTimer() {
         // Cancel the existing timer
@@ -159,6 +163,7 @@ public class ArmProgram extends AppCompatActivity {
         }.start();
         mTimerRunning = true;
     }
+
 
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;

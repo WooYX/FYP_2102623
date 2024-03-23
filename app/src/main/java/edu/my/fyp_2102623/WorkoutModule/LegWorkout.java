@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutModule;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.my.fyp_2102623.R;
+import edu.my.fyp_2102623.WorkoutProgram.LegProgram;
 
 public class LegWorkout extends AppCompatActivity {
     private RecyclerView recyclerViewWorkouts;

@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutModule;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.HashSet;
 import java.util.List;
+
+import edu.my.fyp_2102623.R;
 
 public class CustomAdapter extends ArrayAdapter<Workouts> {
     private HashSet<Workouts> selectedWorkouts = new HashSet<>();

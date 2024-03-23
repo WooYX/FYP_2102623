@@ -1,7 +1,9 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutModule;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.my.fyp_2102623.WorkoutModule.Workout;
 
 public class WorkoutGenerator {
     public static List<Workout> generateLegWorkouts() {

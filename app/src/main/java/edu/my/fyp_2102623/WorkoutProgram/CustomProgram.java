@@ -1,46 +1,58 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.MainActivity;
+import edu.my.fyp_2102623.R;
+import edu.my.fyp_2102623.WorkoutModule.Workouts;
 import pl.droidsonroids.gif.GifImageView;
 
-public class Timer extends AppCompatActivity {
+public class CustomProgram extends AppCompatActivity {
 
-    TextView introPage, subintroPage, timerValue, btnReset, btnPlay, btnPause,btnSetTime,btnHome,btnEnd;
+    TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause,btnSetTime,btnHome,btnEnd;;
     TextView tv30Secs, tv1Min, tv2Min,tv3Min, tv5Min,tv7Min, tv10Min, tv15Min;
-
     View divpage, Progress;
-    ImageView imgtimer;
-
-
+    LinearLayout fitone;
+    GifImageView fbgif;
     private boolean btnPlayClicked;
-    private static final long START_TIME_IN_MILLIS = 60000;
+    private static final long START_TIME_IN_MILLIS = 35000;
     private CountDownTimer countDownTimer;
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+    private int[] gifImageList;
+    private String[] NameList;
     Animation animimpage, bttone, bttwo, btthree, alphagogo;
+    private int currentIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timer);
+        setContentView(R.layout.activity_custom_program);
 
+        currentIndex = 0;
+
+
+
+        //load animation
         animimpage = AnimationUtils.loadAnimation(this, R.anim.animimpage);
         bttone = AnimationUtils.loadAnimation(this, R.anim.bttone);
         bttwo = AnimationUtils.loadAnimation(this, R.anim.bttwo);
@@ -53,13 +65,14 @@ public class Timer extends AppCompatActivity {
         divpage = (View) findViewById(R.id.divpage);
         Progress = (View) findViewById(R.id.Progress);
         timerValue = (TextView) findViewById(R.id.timerValue);
-        btnReset = (TextView) findViewById(R.id.btnReset);
-        imgtimer = (ImageView) findViewById(R.id.imgtimer);
+        fitone = (LinearLayout) findViewById(R.id.fitone);
+        btnExercise = (TextView) findViewById(R.id.btnExercise);
         btnPause = (TextView) findViewById(R.id.btnPause);
         btnPlay = (TextView) findViewById(R.id.btnPlay);
-        btnSetTime=(TextView) findViewById(R.id.btnSetTime);
+        fbgif = (GifImageView) findViewById(R.id.fbgif);
         btnHome=(TextView)findViewById(R.id.btnHome) ;
         btnEnd=(TextView)findViewById(R.id.btnEnd) ;
+        btnSetTime=(TextView) findViewById(R.id.btnSetTime);
         tv30Secs = findViewById(R.id.tv30Secs);
         tv1Min = findViewById(R.id.tv1Min);
         tv2Min = findViewById(R.id.tv2Min);
@@ -70,21 +83,25 @@ public class Timer extends AppCompatActivity {
         tv15Min = findViewById(R.id.tv15Min);
 
         //assign animation
-        btnReset.startAnimation(btthree);
+        btnExercise.startAnimation(btthree);
         Progress.startAnimation(btthree);
+        fitone.startAnimation(bttone);
         introPage.startAnimation(bttwo);
         subintroPage.startAnimation(bttwo);
         divpage.startAnimation(bttwo);
-        imgtimer.startAnimation(alphagogo);
         timerValue.startAnimation(alphagogo);
         btnPause.startAnimation(btthree);
         btnPlay.startAnimation(btthree);
 
+        loadWorkoutsFromSharedPreferences();
+        startTimer();
 
-        btnReset.setOnClickListener(new View.OnClickListener() {
+        btnExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetTimer();
+                startTimer();
+                changeExerciseImage();
             }
         });
 
@@ -101,7 +118,6 @@ public class Timer extends AppCompatActivity {
                 startTimer();
             }
         });
-
         btnSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,7 +129,7 @@ public class Timer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle the click event for the "Home" button
-                Intent intent = new Intent(Timer.this, MainActivity.class);
+                Intent intent = new Intent(CustomProgram.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -122,7 +138,7 @@ public class Timer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle the click event for the "Home" button
-                Intent intent = new Intent(Timer.this, EndWorkout.class);
+                Intent intent = new Intent(CustomProgram.this, EndWorkout.class);
                 startActivity(intent);
             }
         });
@@ -182,14 +198,36 @@ public class Timer extends AppCompatActivity {
                 updateTimer(900000); // 15 minutes
             }
         });
-
     }
 
+    private void changeExerciseImage() {
+        // Check if the shared preferences were initially empty, indicated by gifImageList and NameList not being initialized or being empty
+        if (gifImageList == null || gifImageList.length == 0 || NameList == null || NameList.length == 0) {
+            // If there are no workouts to display, go directly to the EndWorkout activity
+            navigateToEndWorkout();
+            return;
+        }
+
+        if (currentIndex >= gifImageList.length) {
+            // If all workouts have been displayed, also navigate to the EndWorkout activity
+            navigateToEndWorkout();
+            return;
+        }
+
+        // Otherwise, proceed to show the next workout
+        fbgif.setImageResource(gifImageList[currentIndex]);
+        subintroPage.setText(NameList[currentIndex]);
+        currentIndex++;
+    }
+    private void navigateToEndWorkout() {
+        pauseTimer(); // Optional: Consider pausing or resetting the timer here if appropriate
+        Intent intent = new Intent(CustomProgram.this, EndWorkout.class);
+        startActivity(intent);
+        finish(); // Optional: Use this if you want to prevent users from navigating back to this activity
+    }
     private void resetTimer() {
         // Cancel the existing timer
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
+        countDownTimer.cancel();
 
         // Reset the timer values
         mTimeLeftInMillis = START_TIME_IN_MILLIS;
@@ -197,6 +235,11 @@ public class Timer extends AppCompatActivity {
 
         // Update the countdown text
         updateCountDownText();
+
+        // Restart the timer if the "Play" button was clicked
+        if (btnPlayClicked) {
+            startTimer();
+        }
     }
 
 
@@ -217,7 +260,7 @@ public class Timer extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                btnReset.performClick(); // Simulate a click on btnExercise
+                btnExercise.performClick(); // Simulate a click on btnExercise
             }
         }.start();
         mTimerRunning = true;
@@ -238,7 +281,7 @@ public class Timer extends AppCompatActivity {
         int minute = calendar.get(Calendar.MINUTE);
 
         // Create a time picker dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(Timer.this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(CustomProgram.this,
                 (view, hourOfDay, minute1) -> {
                     // Calculate the total time in milliseconds
                     long totalTimeInMillis = (hourOfDay * 3600 + minute1 * 60) * 1000;
@@ -264,5 +307,37 @@ public class Timer extends AppCompatActivity {
         // Update the countdown text
         updateCountDownText();
     }
+    private void loadWorkoutsFromSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("WorkoutPrefs", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("workoutList", null); // Ensure this key matches the one used in Custom_Workout
+        Type type = new TypeToken<ArrayList<Workouts>>() {}.getType();
+        ArrayList<Workouts> loadedWorkouts = gson.fromJson(json, type);
+
+        if (loadedWorkouts == null || loadedWorkouts.isEmpty()) {
+            // If there are no workouts, display "No custom workout" and show the Saitama image
+            introPage.setText("No custom workout");
+            subintroPage.setText("No custom workout");
+            fbgif.setImageResource(R.drawable.saitama);
+            // Early return to skip trying to load non-existent workouts
+            return;
+        }
+
+        // Assuming gifImageList and NameList are to be filled here
+        gifImageList = new int[loadedWorkouts.size()];
+        NameList = new String[loadedWorkouts.size()];
+
+        for (int i = 0; i < loadedWorkouts.size(); i++) {
+            Workouts workout = loadedWorkouts.get(i);
+            NameList[i] = workout.getTitle();
+            gifImageList[i] = getResources().getIdentifier(workout.getImageName(), "drawable", getPackageName());
+        }
+
+        currentIndex = 0; // Reset to start showing from the first workout
+
+        // Optionally, preload the first workout if workouts are present
+        changeExerciseImage(); // Adjust this method if necessary
+    }
+
 
 }

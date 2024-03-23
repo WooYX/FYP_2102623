@@ -19,6 +19,8 @@ import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 
+import edu.my.fyp_2102623.WorkoutModule.WorkoutPage;
+
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;

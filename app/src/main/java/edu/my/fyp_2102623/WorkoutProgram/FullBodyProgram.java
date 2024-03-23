@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.R;
 import pl.droidsonroids.gif.GifImageView;
 
-public class LegProgram extends AppCompatActivity {
+public class FullBodyProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +38,10 @@ public class LegProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leg_program);
+        setContentView(R.layout.activity_full_body_program);
 
-        gifImageList = new int[]{R.drawable.squats, R.drawable.lunges,
-                R.drawable.bulgariansplitsquat, R.drawable.glutebridges,
-                R.drawable.wallsit, R.drawable.boxjumps, R.drawable.stepups,
-                R.drawable.lunges, R.drawable.calfraises, R.drawable.pistolsquats};
-        NameList = new String[]{ "Squats ", "Lunges ", "Bulgarian Split Squats ", "Glute Bridges ", "Wall Sit ", "Box Jumps ",  "Step-Ups ",  "Lunges ",   "Calf Raises ", "Pistol Squats"};
+        gifImageList = new int[]{R.drawable.burpee,R.drawable.squatjumps, R.drawable.mountainclimbers, R.drawable.plankjacks, R.drawable.pushups, R.drawable.lunges, R.drawable.russiantwists, R.drawable.mountainclimbers, R.drawable.wallsit, R.drawable.deadlifts};
+        NameList = new String[]{"Burpees","Squat Jumps", "mountainclimbers","plankjacks", "pushups", "lunges", "russiantwists", "mountainclimbers", "wallsit","deadlifts"};
         currentIndex = 0;
 
         //load animation
@@ -105,11 +103,12 @@ public class LegProgram extends AppCompatActivity {
         });
     }
 
+
     private void changeExerciseImage() {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(LegProgram.this, EndWorkout.class);
+            Intent intent = new Intent(FullBodyProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;
@@ -119,6 +118,8 @@ public class LegProgram extends AppCompatActivity {
         subintroPage.setText(NameList[currentIndex]);
         currentIndex++;
     }
+
+
 
     private void resetTimer() {
         // Cancel the existing timer
@@ -159,6 +160,7 @@ public class LegProgram extends AppCompatActivity {
         }.start();
         mTimerRunning = true;
     }
+
 
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;

@@ -1,4 +1,4 @@
-package edu.my.fyp_2102623;
+package edu.my.fyp_2102623.WorkoutProgram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.WorkoutModule.EndWorkout;
+import edu.my.fyp_2102623.R;
 import pl.droidsonroids.gif.GifImageView;
 
-public class ChestProgram extends AppCompatActivity {
+public class ArmProgram extends AppCompatActivity {
 
     TextView introPage, subintroPage, timerValue, btnExercise, btnPlay, btnPause;
     View divpage, Progress;
@@ -37,13 +38,13 @@ public class ChestProgram extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chest_program);
+        setContentView(R.layout.activity_arm_program);
 
-        gifImageList = new int[]{R.drawable.pushups, R.drawable.inclinepushups,
-                R.drawable.pushupvariations, R.drawable.pushups,
-                R.drawable.dips, R.drawable.declinepushups, R.drawable.chestpress,
-                R.drawable.pushupvariations, R.drawable.diamondpushups, R.drawable.pushups};
-        NameList = new String[]{ "Push-Ups ", "Incline Push-Ups ","Push-Up Variations ","Push-Ups ", "Dips ", "Decline Push-Ups ",  "Chest Press ","Push-Up Variations ",   "Diamond Push-Ups ","Push-Ups "};
+        gifImageList = new int[]{R.drawable.diamondpushups, R.drawable.dipschair,
+                R.drawable.pushupvariations, R.drawable.tricepdips,
+                R.drawable.armcircles, R.drawable.inclinepushups, R.drawable.dipschair,
+                R.drawable.bicepcurls, R.drawable.tricepextensions, R.drawable.hammercurls};
+        NameList = new String[]{"Diamond Push-Ups ", "Chair Dips ", "Push-Up Variations ", "Tricep Dips ", "Arm Circles ", "Incline Push-Ups ", "Chair Dips ", "Bicep Curls ", "Tricep Extensions ", "Hammer Curls "};
         currentIndex = 0;
 
         //load animation
@@ -109,7 +110,7 @@ public class ChestProgram extends AppCompatActivity {
         if (currentIndex >= gifImageList.length) {
             // All GIFs have been displayed, navigate to EndWorkout activity
             pauseTimer();
-            Intent intent = new Intent(ChestProgram.this, EndWorkout.class);
+            Intent intent = new Intent(ArmProgram.this, EndWorkout.class);
             startActivity(intent);
             finish(); // Optional, if you want to close the current activity after navigation
             return;
