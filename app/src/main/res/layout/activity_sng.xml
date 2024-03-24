@@ -26,7 +26,7 @@
                 android:background="#01579B"
                 android:fontFamily="@font/vidaloka"
                 android:lineSpacingExtra="8dp"
-                android:text="Group And Social Page"
+                android:text="Social Page"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="32sp" />

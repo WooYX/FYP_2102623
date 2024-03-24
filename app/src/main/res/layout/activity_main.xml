@@ -252,7 +252,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mmedium"
                     android:lineSpacingExtra="8dp"
-                    android:text="Groups and Society"
+                    android:text="Social and Chatroom"
                     android:textAlignment="center"
                     android:background="#673AB7"
                     android:textColor="#FFFFFF"

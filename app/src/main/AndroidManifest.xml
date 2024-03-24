@@ -19,6 +19,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP_2102623">
         <activity
+            android:name=".Social.CreatePost"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.Login"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.ProfileCreation"
+            android:exported="false" />
+        <activity
+            android:name=".Profile.AccountRegister"
+            android:exported="false" />
+        <activity
             android:name=".WorkoutProgram.CustomProgram"
             android:exported="false" />
         <activity
