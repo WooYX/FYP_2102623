@@ -54,6 +54,7 @@ public class Login extends AppCompatActivity {
         }
         mAuth.signInWithEmailAndPassword(email.getText().toString().trim(), password.getText().toString().trim()).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {
+                Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, MainActivity.class));
             } else {
                 Toast.makeText(this, "Account not found. Please check Email and Password!", Toast.LENGTH_LONG).show();

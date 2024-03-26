@@ -101,8 +101,6 @@ public class ProfileCreation extends AppCompatActivity {
             db.collection("users").document(email).update("gender", gender);
             db.collection("users").document(email).update("age", seekBar.getProgress());
             db.collection("users").document(email).update("messages", new HashMap<>());
-            db.collection("users").document(email).update("blocked", new ArrayList<>());
-            db.collection("users").document(email).update("following", new ArrayList<>());
 
             // Storing the profile image in the separate database using the email as an index again
             if (mImageUri != null) {

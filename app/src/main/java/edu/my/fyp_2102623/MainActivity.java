@@ -19,6 +19,8 @@ import android.widget.Toolbar;
 
 import com.google.android.material.navigation.NavigationView;
 
+import edu.my.fyp_2102623.Profile.AccountRegister;
+import edu.my.fyp_2102623.Profile.Login;
 import edu.my.fyp_2102623.WorkoutModule.WorkoutPage;
 
 public class MainActivity extends AppCompatActivity {
@@ -88,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_Info:
-                        Intent intent3 = new Intent(MainActivity.this, PersonalInfo.class);
+                        Intent intent3 = new Intent(MainActivity.this, Login.class);
                         startActivity(intent3);
                         Log.i("MENU_DRAWER_TAG", "Info item is clicked");
                         drawerLayout.closeDrawer(GravityCompat.START);

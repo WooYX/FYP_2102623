@@ -1,6 +1,7 @@
 package edu.my.fyp_2102623.Profile;
 
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,25 +9,52 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
+import edu.my.fyp_2102623.MainActivity;
 import edu.my.fyp_2102623.R;
 
 public class AccountRegister extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
+    private static final String TAG = "EmailPassword";
+    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_account_register);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            reload();
+        }
+    }
+
+    private void reload() {
     }
 
     public void backButton(View v) {
@@ -56,46 +84,29 @@ public class AccountRegister extends AppCompatActivity {
             Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
             return;
         }
-        DocumentReference doc = db.collection("users").document(email.getText().toString().toLowerCase(Locale.ROOT));
-        // If input fields are valid, check if user has already been created, if not call createAccount()
-        doc.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot fullDoc = task.getResult();
-                if (!fullDoc.exists()) {
-                    createAccount(email.getText().toString().toLowerCase(Locale.ROOT), pass.getText().toString());
-                } else {
-                    Toast.makeText(AccountRegister.this, "Account with this email already exists!", Toast.LENGTH_SHORT).show();
-                }
-
-            } else {
-                Toast.makeText(AccountRegister.this, "Something went wrong. Please make sure you're connected to the Internet", Toast.LENGTH_SHORT).show();
-            }
-        });
+        createAccount(email.getText().toString().toLowerCase(Locale.ROOT), pass.getText().toString());
     }
 
-    /**
-     * Creates the user in Authentication Database, and gives feedback to the user
-     * @param email Email (PK) of the user being made
-     * @param password Password of User
-     */
     private void createAccount(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        User user = new User(email);
-                        db.collection("users").document(email).set(user);
-                        db.collection("users").document(email).update("age", 0);
-                        // Feedback to user
-                        Toast.makeText(AccountRegister.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                        Intent toProfileCreation = new Intent(AccountRegister.this, ProfileCreation.class);
-                        // Once registered, send registered email to next activity for Firestore Indexing
-                        toProfileCreation.putExtra("email", email);
-                        startActivity(toProfileCreation);
-
-                        Toast.makeText(AccountRegister.this, "Authentication SUCCESS", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(AccountRegister.this, "Authentication FAILED", Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(AccountRegister.this, "Account Creation Success ,Proceed to profile creation",
+                                    Toast.LENGTH_SHORT).show();
+                            mAuth.signInWithEmailAndPassword(email, password);
+                            startActivity(new Intent(AccountRegister.this, ProfileCreation.class));
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(AccountRegister.this, "Account Already Exists",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
+
                 });
     }
 }
