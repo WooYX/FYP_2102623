@@ -21,6 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import edu.my.fyp_2102623.Profile.AccountRegister;
 import edu.my.fyp_2102623.Profile.Login;
+import edu.my.fyp_2102623.Profile.UserProfile;
 import edu.my.fyp_2102623.WorkoutModule.WorkoutPage;
 
 public class MainActivity extends AppCompatActivity {
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         workout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
+
                 Intent intent6 = new Intent(MainActivity.this, WorkoutPage.class);
                 startActivity(intent6);
             }
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         startworkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
+
                 Intent intent7 = new Intent(MainActivity.this, WorkoutPage.class);
                 startActivity(intent7);
             }
@@ -132,23 +133,23 @@ public class MainActivity extends AppCompatActivity {
         motivations.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent8 = new Intent(MainActivity.this, Motivational.class);
+
+                Intent intent8 = new Intent(MainActivity.this, UserProfile.class);
                 startActivity(intent8);
             }
         });
         startmotivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
-                Intent intent9 = new Intent(MainActivity.this, Motivational.class);
+
+                Intent intent9 = new Intent(MainActivity.this, Login.class);
                 startActivity(intent9);
             }
         });
         group.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
+
                 Intent intent10 = new Intent(MainActivity.this, SNG.class);
                 startActivity(intent10);
             }
@@ -156,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         startgroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
+
                 Intent intent11 = new Intent(MainActivity.this, SNG.class);
                 startActivity(intent11);
             }
@@ -164,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         PersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create and start the intent to navigate to WorkoutFullBody activity
+
                 Intent intent12 = new Intent(MainActivity.this, PersonalInfo.class);
                 startActivity(intent12);
             }

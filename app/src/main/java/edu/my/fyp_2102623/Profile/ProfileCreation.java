@@ -19,18 +19,21 @@ import android.widget.Toast;
 import edu.my.fyp_2102623.MainActivity;
 import edu.my.fyp_2102623.R;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Map;
 
 
 public class ProfileCreation extends AppCompatActivity {
     FirebaseFirestore db;
-    String email;
+    FirebaseAuth mAuth;
     Uri mImageUri;
     StorageReference storRef;
 
@@ -40,25 +43,28 @@ public class ProfileCreation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_creation);
         db = FirebaseFirestore.getInstance();
-        storRef = FirebaseStorage.getInstance().getReference("pfpImages");
-
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
+        storRef = FirebaseStorage.getInstance().getReference("pfpImages/" + user.toString());
         SeekBar seek = findViewById(R.id.ageBar);
         TextView age = findViewById(R.id.ageView);
         // Making it so Age Bar Changes displayed numerical value as User decides age
-        seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 age.setText("Age " + i);
             }
+
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
         Toast.makeText(ProfileCreation.this, "Add a Profile Picture", Toast.LENGTH_SHORT).show();
-        // Obtain email from ChooseInterests for PK indexing
         Intent intent = getIntent();
-        email = intent.getStringExtra("email");
     }
 
     /**
@@ -71,7 +77,7 @@ public class ProfileCreation extends AppCompatActivity {
         RadioGroup genders = findViewById(R.id.radioGroup);
         int selected = genders.getCheckedRadioButtonId();
         // Ensuring Each Field is Actually Filled in
-        if (selected == - 1) {
+        if (selected == -1) {
             Toast.makeText(ProfileCreation.this, "Please enter your Gender!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -94,18 +100,21 @@ public class ProfileCreation extends AppCompatActivity {
             Toast.makeText(ProfileCreation.this, "Please enter your Gender!", Toast.LENGTH_SHORT).show();
         } else {
             // Storing each individual attribute since PK was imported from previous Intent
+            Map<String, Object> userMap = new HashMap<>();
+            final FirebaseUser user = mAuth.getCurrentUser();
+            // Add a new document with the user's UID as the document reference
             SeekBar seekBar = (SeekBar) findViewById(R.id.ageBar);
-            db.collection("users").document(email).update("firstname", fname.getText().toString());
-            db.collection("users").document(email).update("lastname", lname.getText().toString());
-            db.collection("users").document(email).update("bio", bio.getText().toString());
-            db.collection("users").document(email).update("gender", gender);
-            db.collection("users").document(email).update("age", seekBar.getProgress());
-            db.collection("users").document(email).update("messages", new HashMap<>());
+            userMap.put("firstname", fname.getText().toString());
+            userMap.put("lastname", lname.getText().toString());
+            userMap.put("bio", bio.getText().toString());
+            userMap.put("gender", gender);
+            userMap.put("age", seekBar.getProgress());
+            userMap.put("messages", new HashMap<>());
+            db.collection("users").document(user.getUid())
+                    .set(userMap, SetOptions.merge());
 
-            // Storing the profile image in the separate database using the email as an index again
             if (mImageUri != null) {
-                StorageReference pfpReference = storRef.child(email);
-                pfpReference.putFile(mImageUri).addOnCompleteListener(task ->
+                storRef.putFile(mImageUri).addOnCompleteListener(task ->
                         Toast.makeText(ProfileCreation.this, "Image Successfully Uploaded!", Toast.LENGTH_SHORT).show());
             }
 
@@ -114,17 +123,6 @@ public class ProfileCreation extends AppCompatActivity {
         }
     }
 
-    /**
-     * Go back to interests
-     * @param v View
-     */
-    public void backtoInterests(View v) {
-        finish();
-    }
-
-    /**
-     * Opens System File Manager to select Profile Image
-     */
     public void uploadProfilePic(View v) {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -132,10 +130,6 @@ public class ProfileCreation extends AppCompatActivity {
         startActivityForResult(intent, 1);
     }
 
-
-    /**
-     * Previews image on PFP page
-     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
